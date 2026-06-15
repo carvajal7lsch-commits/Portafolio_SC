@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CV — Juan Sebastián Carvajal</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="css/cv-styles.css"/>
+</head>
+<body>
+
+  <!-- Toolbar para acciones (no se imprime) -->
+  <div class="toolbar">
+    <a href="index.html" class="btn btn-outline">Volver al inicio</a>
+    <button class="btn" id="print-btn">
+      <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+        <path d="M5 1a2 2 0 0 0-2 2v1h10V3a2 2 0 0 0-2-2H5zm6 8H5a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-3a1 1 0 0 0-1-1z"/>
+        <path d="M0 7a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2h-1v-2a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v2H2a2 2 0 0 1-2-2V7zm2.5 1a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1z"/>
+      </svg>
+      Descargar PDF
+    </button>
+  </div>
+
+  <div class="cv-page">
+    
+    <!-- SIDEBAR (Columna Izquierda Oscura) -->
+    <aside class="sidebar">
+      <!-- Profile Picture (Placeholder) -->
+      <div class="profile-pic-container">
+        <div class="profile-pic">
+          <span>JC</span>
+        </div>
+      </div>
+
+      <div class="sidebar-section">
+        <h3 class="sidebar-title">CONTACTO</h3>
+        <ul class="sidebar-list">
+          <li>
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+            <a href="mailto:carvajal7lsch@gmail.com">carvajal7lsch@gmail.com</a>
+          </li>
+          <li>
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+            <span>Florencia, Caquetá</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="sidebar-section">
+        <h3 class="sidebar-title">SITIO WEB</h3>
+        <ul class="sidebar-list">
+          <li>
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+            <a href="https://github.com/carvajal7lsch-commits" target="_blank">github.com/carvajal7lsch-commits</a>
+          </li>
+          <li>
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+            <a href="https://www.linkedin.com/in/sᴇʙᴀsᴛɪᴀɴ-cᴀʀᴠᴀᴊᴀʟ-0b9059369" target="_blank">linkedin.com/in/sebastián-carvajal</a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="sidebar-section">
+        <h3 class="sidebar-title">IDIOMAS</h3>
+        <ul class="sidebar-list">
+          <li>
+            <strong>Español</strong>
+            <span class="text-sm">Nativo</span>
+          </li>
+          <li>
+            <strong>Inglés</strong>
+            <span class="text-sm">A1 (Básico / SENA)</span>
+          </li>
+        </ul>
+      </div>
+      
+      <div class="sidebar-section">
+        <h3 class="sidebar-title">HABILIDADES</h3>
+        <ul class="sidebar-list">
+          <li style="flex-direction: column; align-items: flex-start; gap: 0.2rem;">
+            <strong>Backend</strong>
+            <span class="text-sm">PHP, MySQL, MVC</span>
+          </li>
+          <li style="flex-direction: column; align-items: flex-start; gap: 0.2rem;">
+            <strong>Frontend</strong>
+            <span class="text-sm">HTML, CSS, JS</span>
+          </li>
+          <li style="flex-direction: column; align-items: flex-start; gap: 0.2rem;">
+            <strong>Diseño</strong>
+            <span class="text-sm">Figma, UI/UX, draw.io</span>
+          </li>
+          <li style="flex-direction: column; align-items: flex-start; gap: 0.2rem;">
+            <strong>Herramientas</strong>
+            <span class="text-sm">Git, Docker, SonarQube, IA</span>
+          </li>
+        </ul>
+      </div>
+      
+    </aside>
+
+    <!-- MAIN CONTENT (Columna Derecha Clara) -->
+    <main class="main-content">
+      
+      <header class="cv-header">
+        <h1>JUAN SEBASTIÁN<br>CARVAJAL</h1>
+        <h2>DESARROLLADOR DE SOFTWARE</h2>
+      </header>
+
+      <section class="section">
+        <h3 class="section-title">SOBRE MÍ</h3>
+        <p class="profile-text">
+          Desarrollador de software enfocado en construir productos que no solo funcionen, sino que destaquen por su diseño y estructura. Me apasiona la arquitectura limpia, el código escalable y garantizar una experiencia de usuario que se adapte exactamente a las necesidades. Busco siempre encontrar el equilibrio entre la solución técnica eficaz y la innovación, asegurando máxima calidad en cada entrega.
+        </p>
+      </section>
+
+      <section class="section">
+        <h3 class="section-title">EXPERIENCIA</h3>
+        
+        <div class="timeline-item">
+          <div class="timeline-date">2024 - Act</div>
+          <div class="timeline-content">
+            <h4>Desarrollador Principal</h4>
+            <h5>Proyectos Independientes y Académicos</h5>
+            <p>
+              Responsable de todo el ciclo de desarrollo en diversos proyectos: análisis de requerimientos, diseño de arquitectura (MVC), modelado de bases de datos, implementación Full Stack y despliegue. He trabajado enfocándome en soluciones eficientes y resolución de problemas técnicos complejos.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h3 class="section-title">PROYECTOS DESTACADOS</h3>
+        
+        <div class="timeline-item">
+          <div class="timeline-date">PHP / JS</div>
+          <div class="timeline-content">
+            <h4>Pedidos LYD</h4>
+            <p>
+              Sistema integral de gestión de pedidos, actualmente en producción. Desarrollo completo encargado del análisis, diseño de arquitectura y solución de requerimientos en tiempo real.
+            </p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-date">Full Stack</div>
+          <div class="timeline-content">
+            <h4>Zooki</h4>
+            <p>
+              Aplicación de gestión y agendamiento veterinario. Proyecto Full Stack integral participando activamente en el diseño, análisis de usuario y desarrollo de software con MVC.
+            </p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-date">SENA</div>
+          <div class="timeline-content">
+            <h4>Juicios Evaluativos SENA</h4>
+            <p>
+              Sistema de juicios evaluativos desarrollado como solución práctica a las necesidades de la institución SENA Caquetá.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h3 class="section-title">EDUCACIÓN</h3>
+        
+        <div class="timeline-item">
+          <div class="timeline-date">2025 - 2027</div>
+          <div class="timeline-content">
+            <h4>Tecnólogo en Análisis y Desarrollo de Software</h4>
+            <h5>SENA — Florencia</h5>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-date">2024</div>
+          <div class="timeline-content">
+            <h4>Bachiller Académico</h4>
+            <h5>Institución Educativa Juana Velásquez</h5>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+  </div>
+
+  <script src="js/cv-main.js"></script>
+</body>
+</html>

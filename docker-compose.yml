@@ -1,0 +1,7 @@
+services:
+  portafolio-sc:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: portafolio-sc
+    restart: unless-stopped

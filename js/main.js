@@ -70,7 +70,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const observer = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                entry.target.classList.add('fade-in-up');
+                // Remove inline style so it transitions to CSS stylesheet default (including rotations!)
+                entry.target.style.transform = '';
+                entry.target.style.opacity = '';
+                
+                // Clear inline transition after it finishes so hover CSS transition works perfectly
+                setTimeout(() => {
+                    entry.target.style.transition = '';
+                }, 600);
+                
                 observer.unobserve(entry.target);
             }
         });
@@ -83,19 +91,6 @@ document.addEventListener('DOMContentLoaded', () => {
         el.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
         observer.observe(el);
     });
-
-    const style = document.createElement('style');
-    style.innerHTML = `
-        .fade-in-up {
-            opacity: 1 !important;
-            transform: translateY(0) !important;
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: scale(0.95); }
-            to { opacity: 1; transform: scale(1); }
-        }
-    `;
-    document.head.appendChild(style);
 
     // 6. Lightbox Modal para Mockups
     const modal = document.getElementById('lightbox-modal');
@@ -130,6 +125,30 @@ document.addEventListener('DOMContentLoaded', () => {
             if(e.key === 'Escape' && modal.classList.contains('active')) {
                 modal.classList.remove('active');
             }
+        });
+    }
+
+    // 7. Tech Visualizer Tabs Switcher
+    const tabBtns = document.querySelectorAll('.tab-btn');
+    const tabContents = document.querySelectorAll('.tab-content');
+    if (tabBtns.length > 0 && tabContents.length > 0) {
+        tabBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const targetTab = btn.getAttribute('data-tab');
+                
+                // Quitar clase activa de todos los botones y agregar al seleccionado
+                tabBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                
+                // Ocultar contenidos y mostrar el seleccionado
+                tabContents.forEach(content => {
+                    if (content.id === `tab-${targetTab}`) {
+                        content.classList.add('active');
+                    } else {
+                        content.classList.remove('active');
+                    }
+                });
+            });
         });
     }
 });

@@ -57,9 +57,20 @@ body {
 
 .btn-outline:hover { background: #f9fafb; }
 
+/* Contenedor del CV */
+.cv-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  overflow: visible;
+}
+
 /* Página CV */
 .cv-page {
   width: 21cm;
+  min-width: 21cm;
+  flex-shrink: 0;
   height: 29.7cm; /* Strictly A4 height */
   background: var(--paper);
   margin: 0 auto;
@@ -93,6 +104,7 @@ body {
   align-items: center;
   justify-content: center;
   border: 3px solid var(--border-dark);
+  object-fit: cover;
 }
 
 .profile-pic span {
@@ -272,6 +284,11 @@ body {
     background: transparent;
     padding: 0;
   }
+  .cv-container {
+    width: auto;
+    height: auto;
+    display: block;
+  }
   .toolbar {
     display: none !important;
   }
@@ -304,26 +321,16 @@ body {
   }
 }
 
-@media screen and (max-width: 768px) {
-  .cv-page {
-    flex-direction: column;
-    height: auto;
+@media screen and (max-width: 850px) {
+  body {
+    padding: 1rem 0;
+    overflow-x: hidden;
   }
-  .sidebar, .main-content {
-    width: 100%;
-    padding: 1.5rem;
-  }
-  .timeline-item {
-    flex-direction: column;
-  }
-  .timeline-date {
-    width: 100%;
-    margin-bottom: 0.3rem;
-  }
-  .timeline-content {
-    width: 100%;
-  }
-  .cv-header h1 {
-    font-size: 2.2rem;
+  .toolbar {
+    width: 95%;
+    max-width: 21cm;
+    margin: 0 auto 1rem;
+    padding: 0 10px;
+    justify-content: space-between;
   }
 }

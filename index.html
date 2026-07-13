@@ -1,25 +1,27 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Juan Sebastian Carvajal | Portafolio</title>
+    <title>JSC | Portafolio</title>
     <!-- Google Fonts: Inter and Outfit -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;600;800&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-    <!-- Spline Viewer Script -->
-    <script type="module" src="https://unpkg.com/@splinetool/viewer@1.9.5/build/spline-viewer.js"></script>
 </head>
+
 <body>
 
     <!-- Header / Navigation -->
     <header class="header">
         <div class="container nav-container">
-            <a href="#" class="logo">Juan<span>.Carvajal</span></a>
+            <a href="#" class="logo">Juan<span> Carvajal</span></a>
             <nav class="nav">
                 <ul class="nav-list">
                     <li><a href="#hero" class="nav-link">Inicio</a></li>
@@ -40,22 +42,207 @@
     <main>
         <!-- Hero Section with Spline 3D -->
         <section id="hero" class="hero-section">
+            <!-- Canvas Grid Interactivo (Estilo Framer) -->
+            <canvas id="kinetic-grid-canvas"
+                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1;"></canvas>
             <div class="container hero-container">
                 <div class="hero-content">
                     <h2 class="hero-subtitle">Hola, soy Juan Sebastian Carvajal</h2>
                     <h1 class="hero-title">Desarrollador de <br> <span class="highlight">Software</span></h1>
                     <p class="hero-description">
-                        Estudiante de Análisis y Desarrollo de Software en el SENA. Me apasiona entregar productos de calidad, 
-                        enfocados en una sólida arquitectura, escalabilidad e innovación, siempre adaptándome a las necesidades del usuario.
+                        Estudiante de Análisis y Desarrollo de Software en el SENA. Me apasiona entregar productos de
+                        calidad,
+                        enfocados en una sólida arquitectura, escalabilidad e innovación, siempre adaptándome a las
+                        necesidades del usuario.
                     </p>
                     <div class="hero-actions">
                         <a href="cv_sebastian.html" target="_blank" class="btn btn-primary" id="download-cv">Ver CV</a>
                         <a href="#projects" class="btn btn-secondary">Ver Proyectos</a>
                     </div>
                 </div>
-                <div class="hero-3d">
-                    <!-- Visor de Spline con tu Robot 3D -->
-                    <spline-viewer url="https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode"></spline-viewer>
+                <div class="hero-right-placeholder">
+                    <div class="tech-visualizer">
+                        <!-- Window Header -->
+                        <div class="visualizer-header">
+                            <div class="window-dots">
+                                <span class="dot red"></span>
+                                <span class="dot yellow"></span>
+                                <span class="dot green"></span>
+                            </div>
+                            <div class="visualizer-tabs">
+                                <button class="tab-btn active" data-tab="db">
+                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22c5.523 0 10-2.239 10-5V7c0-2.761-4.477-5-10-5S2 4.239 2 7v10c0 2.761 4.477 5 10 5z"></path><path d="M2 7c0 2.761 4.477 5 10 5s10-2.239 10-5"></path><path d="M2 12c0 2.761 4.477 5 10 5s10-2.239 10-5"></path></svg>
+                                    Schema.sql
+                                </button>
+                                <button class="tab-btn" data-tab="code">
+                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+                                    Developer.php
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <!-- Window Body -->
+                        <div class="visualizer-body">
+                            <!-- DB Schema Tab -->
+                            <div class="tab-content active" id="tab-db">
+                                <div class="db-schema-wrapper">
+                                    <!-- SVG lines connecting tables -->
+                                    <svg class="db-relations" width="100%" height="100%">
+                                        <!-- Line to Pedidos (usuario_id) -->
+                                        <path class="relation-line pulse-1" d="M 207 125 C 218 125, 218 87, 228 87" />
+                                        <!-- Line to Mascotas (dueño_id) -->
+                                        <path class="relation-line pulse-2" d="M 207 125 C 218 125, 218 247, 228 247" />
+                                        
+                                        <!-- Cardinality Nodes (1-to-N) - Alineados al borde exterior real -->
+                                        <!-- User side (1) -->
+                                        <g>
+                                            <circle cx="201" cy="125" r="6" fill="#0c0c12" stroke="#3b82f6" stroke-width="1.5" />
+                                            <text x="201" y="128" font-size="8px" fill="#3b82f6" text-anchor="middle" font-weight="bold" font-family="monospace">1</text>
+                                        </g>
+                                        <!-- Pedidos side (N) -->
+                                        <g>
+                                            <circle cx="234" cy="87" r="6" fill="#0c0c12" stroke="#8b5cf6" stroke-width="1.5" />
+                                            <text x="234" y="90" font-size="8px" fill="#8b5cf6" text-anchor="middle" font-weight="bold" font-family="monospace">N</text>
+                                        </g>
+                                        <!-- Mascotas side (N) -->
+                                        <g>
+                                            <circle cx="234" cy="247" r="6" fill="#0c0c12" stroke="#10b981" stroke-width="1.5" />
+                                            <text x="234" y="250" font-size="8px" fill="#10b981" text-anchor="middle" font-weight="bold" font-family="monospace">N</text>
+                                        </g>
+                                    </svg>
+                                    
+                                    <!-- Table 1: Users -->
+                                    <div class="db-table-card" style="top: 80px; left: 15px;">
+                                        <div class="table-name">usuarios</div>
+                                        <ul class="table-fields">
+                                            <li class="pk">
+                                                <div class="field-left">
+                                                    <span class="field-dot"></span>
+                                                    <span class="field-name">id</span>
+                                                </div>
+                                                <div class="field-right">
+                                                    <svg class="key-icon" width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><path d="M7 2a5 5 0 0 0-5 5 5 5 0 0 0 4.1 4.9L2 16v4a2 2 0 0 0 2 2h4v-2h2v-2h2l3.1-3.1A5 5 0 0 0 22 7a5 5 0 0 0-5-5 5 5 0 0 0-5 5c0 .3.02.6.06.88L3.2 16.7A1.5 1.5 0 0 0 3 17.8v3.4c0 .4.3.7.7.7h3.4c.4 0 .8-.2 1.1-.5l2.2-2.2v-2h2v-2h2.2c.4 0 .8-.2 1.1-.5l2.2-2.2c.28.04.58.06.88.06a5 5 0 0 0 5-5 5 5 0 0 0-5-5zM17 9a2 2 0 1 1 0-4 2 2 0 0 1 0 4z"/></svg>
+                                                    <span class="type">INT</span>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="field-left">
+                                                    <span class="field-dot"></span>
+                                                    <span class="field-name">nombre</span>
+                                                </div>
+                                                <span class="type">VARCHAR</span>
+                                            </li>
+                                            <li>
+                                                <div class="field-left">
+                                                    <span class="field-dot"></span>
+                                                    <span class="field-name">email</span>
+                                                </div>
+                                                <span class="type">VARCHAR</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <!-- Table 2: Pedidos -->
+                                    <div class="db-table-card" style="top: 15px; left: 240px;">
+                                        <div class="table-name">pedidos (LYD)</div>
+                                        <ul class="table-fields">
+                                            <li class="pk">
+                                                <div class="field-left">
+                                                    <span class="field-dot"></span>
+                                                    <span class="field-name">id</span>
+                                                </div>
+                                                <div class="field-right">
+                                                    <svg class="key-icon" width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><path d="M7 2a5 5 0 0 0-5 5 5 5 0 0 0 4.1 4.9L2 16v4a2 2 0 0 0 2 2h4v-2h2v-2h2l3.1-3.1A5 5 0 0 0 22 7a5 5 0 0 0-5-5 5 5 0 0 0-5 5c0 .3.02.6.06.88L3.2 16.7A1.5 1.5 0 0 0 3 17.8v3.4c0 .4.3.7.7.7h3.4c.4 0 .8-.2 1.1-.5l2.2-2.2v-2h2v-2h2.2c.4 0 .8-.2 1.1-.5l2.2-2.2c.28.04.58.06.88.06a5 5 0 0 0 5-5 5 5 0 0 0-5-5zM17 9a2 2 0 1 1 0-4 2 2 0 0 1 0 4z"/></svg>
+                                                    <span class="type">INT</span>
+                                                </div>
+                                            </li>
+                                            <li class="fk">
+                                                <div class="field-left">
+                                                    <span class="field-dot"></span>
+                                                    <span class="field-name">usuario_id</span>
+                                                </div>
+                                                <div class="field-right">
+                                                    <svg class="key-icon" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>
+                                                    <span class="type">INT</span>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="field-left">
+                                                    <span class="field-dot"></span>
+                                                    <span class="field-name">total</span>
+                                                </div>
+                                                <span class="type">DECIMAL</span>
+                                            </li>
+                                            <li>
+                                                <div class="field-left">
+                                                    <span class="field-dot"></span>
+                                                    <span class="field-name">estado</span>
+                                                </div>
+                                                <span class="type">VARCHAR</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                    
+                                    <!-- Table 3: Mascotas -->
+                                    <div class="db-table-card" style="top: 175px; left: 240px;">
+                                        <div class="table-name">mascotas (Zooki)</div>
+                                        <ul class="table-fields">
+                                            <li class="pk">
+                                                <div class="field-left">
+                                                    <span class="field-dot"></span>
+                                                    <span class="field-name">id</span>
+                                                </div>
+                                                <div class="field-right">
+                                                    <svg class="key-icon" width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><path d="M7 2a5 5 0 0 0-5 5 5 5 0 0 0 4.1 4.9L2 16v4a2 2 0 0 0 2 2h4v-2h2v-2h2l3.1-3.1A5 5 0 0 0 22 7a5 5 0 0 0-5-5 5 5 0 0 0-5 5c0 .3.02.6.06.88L3.2 16.7A1.5 1.5 0 0 0 3 17.8v3.4c0 .4.3.7.7.7h3.4c.4 0 .8-.2 1.1-.5l2.2-2.2v-2h2v-2h2.2c.4 0 .8-.2 1.1-.5l2.2-2.2c.28.04.58.06.88.06a5 5 0 0 0 5-5 5 5 0 0 0-5-5zM17 9a2 2 0 1 1 0-4 2 2 0 0 1 0 4z"/></svg>
+                                                    <span class="type">INT</span>
+                                                </div>
+                                            </li>
+                                            <li class="fk">
+                                                <div class="field-left">
+                                                    <span class="field-dot"></span>
+                                                    <span class="field-name">dueño_id</span>
+                                                </div>
+                                                <div class="field-right">
+                                                    <svg class="key-icon" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>
+                                                    <span class="type">INT</span>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="field-left">
+                                                    <span class="field-dot"></span>
+                                                    <span class="field-name">nombre</span>
+                                                </div>
+                                                <span class="type">VARCHAR</span>
+                                            </li>
+                                            <li>
+                                                <div class="field-left">
+                                                    <span class="field-dot"></span>
+                                                    <span class="field-name">especie</span>
+                                                </div>
+                                                <span class="type">VARCHAR</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div></div>
+                            
+                            <!-- Code Tab -->
+                            <div class="tab-content" id="tab-code">
+                                <pre class="code-editor"><code><span class="keyword">class</span> <span class="class-name">SebastianCarvajal</span> <span class="keyword">implements</span> <span class="class-name">Developer</span> {
+    <span class="keyword">private</span> <span class="variable">$location</span> = <span class="string">'Florencia, Caquetá'</span>;
+    <span class="keyword">private</span> <span class="variable">$skills</span> = [<span class="string">'PHP'</span>, <span class="string">'MySQL'</span>, <span class="string">'JS'</span>, <span class="string">'MVC'</span>];
+
+    <span class="keyword">public</span> <span class="keyword">function</span> <span class="function-name">buildSolution</span>(<span class="variable">$requirements</span>) {
+        <span class="keyword">return</span> <span class="keyword">new</span> <span class="class-name">CleanCode</span>([
+            <span class="string">'architecture'</span> => <span class="string">'MVC'</span>,
+            <span class="string">'quality'</span> => <span class="keyword">true</span>,
+            <span class="string">'scalability'</span> => <span class="keyword">true</span>
+        ]);
+    }
+}</code></pre>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -68,39 +255,48 @@
                     <div class="about-card">
                         <div class="card-icon-wrapper">
                             <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                    d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
                             </svg>
                         </div>
                         <h3>Arquitectura & Calidad</h3>
-                        <p>Mi propósito es mejorar en arquitectura de software para garantizar calidad, escalabilidad y soluciones eficaces en cada producto entregado.</p>
+                        <p>Mi propósito es mejorar en arquitectura de software para garantizar calidad, escalabilidad y
+                            soluciones eficaces en cada producto entregado.</p>
                     </div>
                     <div class="about-card">
                         <div class="card-icon-wrapper">
                             <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                    d="M13 10V3L4 14h7v7l9-11h-7z" />
                             </svg>
                         </div>
                         <h3>Innovación</h3>
-                        <p>Busco siempre cómo integrar innovación a mis soluciones, asegurando que además de funcionar perfectamente, destaquen por su valor.</p>
+                        <p>Busco siempre cómo integrar innovación a mis soluciones, asegurando que además de funcionar
+                            perfectamente, destaquen por su valor.</p>
                     </div>
                     <div class="about-card">
                         <div class="card-icon-wrapper">
                             <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 14l9-5-9-5-9 5 9 5z" />
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222" />
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                    d="M12 14l9-5-9-5-9 5 9 5z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                    d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222" />
                             </svg>
                         </div>
                         <h3>Educación</h3>
-                        <p>Tecnólogo en ADSO (SENA, finaliza 2027) y Bachiller Académico (2024, Col. Juana Velasquez). Resido en Florencia, Caquetá.</p>
+                        <p>Tecnólogo en ADSO (SENA, finaliza 2027) y Bachiller Académico (2024, Col. Juana Velasquez).
+                            Resido en Florencia, Caquetá.</p>
                     </div>
                     <div class="about-card">
                         <div class="card-icon-wrapper">
                             <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                    d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
                             </svg>
                         </div>
                         <h3>Enfoque en el Usuario</h3>
-                        <p>Me enfoco en lo que el cliente o usuario necesita, adaptando mis desarrollos para ser lo más similar a sus requerimientos exactos.</p>
+                        <p>Me enfoco en lo que el cliente o usuario necesita, adaptando mis desarrollos para ser lo más
+                            similar a sus requerimientos exactos.</p>
                     </div>
                 </div>
             </div>
@@ -114,27 +310,95 @@
                     <!-- Carousel 1 (L to R) -->
                     <div class="swiper swiper-skills-1" dir="ltr">
                         <div class="swiper-wrapper">
-                            <div class="swiper-slide"><div class="skill-card-vertical"><i class="devicon-php-plain colored"></i><span>PHP</span></div></div>
-                            <div class="swiper-slide"><div class="skill-card-vertical"><i class="devicon-mysql-plain colored"></i><span>MySQL</span></div></div>
-                            <div class="swiper-slide"><div class="skill-card-vertical"><i class="devicon-html5-plain colored"></i><span>HTML5</span></div></div>
-                            <div class="swiper-slide"><div class="skill-card-vertical"><i class="devicon-css3-plain colored"></i><span>CSS3</span></div></div>
-                            <div class="swiper-slide"><div class="skill-card-vertical"><i class="devicon-javascript-plain colored"></i><span>JavaScript</span></div></div>
-                            <div class="swiper-slide"><div class="skill-card-vertical"><i class="devicon-git-plain colored"></i><span>Git / GitHub</span></div></div>
-                            <div class="swiper-slide"><div class="skill-card-vertical"><i class="devicon-docker-plain colored"></i><span>Docker</span></div></div>
-                            <div class="swiper-slide"><div class="skill-card-vertical"><i class="devicon-figma-plain colored"></i><span>Figma</span></div></div>
+                            <div class="swiper-slide">
+                                <div class="skill-card-vertical"><i
+                                        class="devicon-php-plain colored"></i><span>PHP</span></div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="skill-card-vertical"><i
+                                        class="devicon-mysql-plain colored"></i><span>MySQL</span></div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="skill-card-vertical"><i
+                                        class="devicon-html5-plain colored"></i><span>HTML5</span></div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="skill-card-vertical"><i
+                                        class="devicon-css3-plain colored"></i><span>CSS3</span></div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="skill-card-vertical"><i
+                                        class="devicon-javascript-plain colored"></i><span>JavaScript</span></div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="skill-card-vertical"><i class="devicon-git-plain colored"></i><span>Git /
+                                        GitHub</span></div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="skill-card-vertical"><i
+                                        class="devicon-docker-plain colored"></i><span>Docker</span></div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="skill-card-vertical"><i
+                                        class="devicon-figma-plain colored"></i><span>Figma</span></div>
+                            </div>
                         </div>
                     </div>
                     <!-- Carousel 2 (R to L) -->
-                    <div class="swiper swiper-skills-2" dir="ltr" style="margin-top: 25px;">
+                    <div class="swiper swiper-skills-2" dir="rtl" style="margin-top: 25px;">
                         <div class="swiper-wrapper">
-                            <div class="swiper-slide"><div class="skill-card-vertical"><i class="devicon-apache-plain colored"></i><span>XAMPP</span></div></div>
-                            <div class="swiper-slide"><div class="skill-card-vertical"><i class="devicon-vscode-plain colored"></i><span>VS Code</span></div></div>
-                            <div class="swiper-slide"><div class="skill-card-vertical"><i class="devicon-sonarqube-plain colored"></i><span>SonarQube</span></div></div>
-                            <div class="swiper-slide"><div class="skill-card-vertical"><svg style="width:3rem; height:3rem; color: var(--accent-color)" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4" /></svg><span>Arquitectura MVC</span></div></div>
-                            <div class="swiper-slide"><div class="skill-card-vertical"><svg style="width:3rem; height:3rem; color: var(--accent-color)" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z" /></svg><span>Diseño Res.</span></div></div>
-                            <div class="swiper-slide"><div class="skill-card-vertical"><svg style="width:3rem; height:3rem; color: var(--accent-color)" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" /></svg><span>Draw.io / DB</span></div></div>
-                            <div class="swiper-slide"><div class="skill-card-vertical"><svg style="width:3rem; height:3rem; color: var(--accent-color)" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg><span>IAs Dev</span></div></div>
-                            <div class="swiper-slide"><div class="skill-card-vertical"><svg style="width:3rem; height:3rem; color: var(--accent-color)" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129" /></svg><span>Inglés A1</span></div></div>
+                            <div class="swiper-slide">
+                                <div class="skill-card-vertical"><i
+                                        class="devicon-apache-plain colored"></i><span>XAMPP</span></div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="skill-card-vertical"><i class="devicon-vscode-plain colored"></i><span>VS
+                                        Code</span></div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="skill-card-vertical"><i
+                                        class="devicon-sonarqube-plain colored"></i><span>SonarQube</span></div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="skill-card-vertical"><svg
+                                        style="width:3rem; height:3rem; color: var(--accent-color)" fill="none"
+                                        viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                            d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4" />
+                                    </svg><span>Arquitectura MVC</span></div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="skill-card-vertical"><svg
+                                        style="width:3rem; height:3rem; color: var(--accent-color)" fill="none"
+                                        viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                            d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z" />
+                                    </svg><span>Diseño Res.</span></div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="skill-card-vertical"><svg
+                                        style="width:3rem; height:3rem; color: var(--accent-color)" fill="none"
+                                        viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                            d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
+                                    </svg><span>Draw.io / DB</span></div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="skill-card-vertical"><svg
+                                        style="width:3rem; height:3rem; color: var(--accent-color)" fill="none"
+                                        viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                            d="M13 10V3L4 14h7v7l9-11h-7z" />
+                                    </svg><span>IAs Dev</span></div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="skill-card-vertical"><svg
+                                        style="width:3rem; height:3rem; color: var(--accent-color)" fill="none"
+                                        viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                            d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129" />
+                                    </svg><span>Inglés A1</span></div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -145,7 +409,7 @@
         <section id="projects" class="projects-section section-padding">
             <div class="container">
                 <h2 class="section-title">Mis <span class="highlight">Proyectos</span></h2>
-                
+
 
                 <!-- Gallery -->
                 <div class="projects-grid main-projects-grid" id="main-projects-grid">
@@ -153,21 +417,33 @@
                     <div class="project-card" data-category="fullstack">
                         <div class="mockup-showcase">
                             <div class="mockup-device mockup-laptop">
-                                <div class="device-screen"><img src="img/proyectos/lyd-laptop.png" onerror="this.src='https://via.placeholder.com/1920x1080/111827/3b82f6?text=Captura+Port%C3%A1til'" alt="LYD Laptop View"></div>
+                                <div class="device-screen"><img src="img/proyectos/lyd-laptop.png"
+                                        onerror="this.src='https://via.placeholder.com/1920x1080/111827/3b82f6?text=Captura+Port%C3%A1til'"
+                                        alt="LYD Laptop View"></div>
                             </div>
                             <div class="mockup-device mockup-tablet">
-                                <div class="device-screen"><img src="img/proyectos/lyd-tablet.png" onerror="this.src='https://via.placeholder.com/768x1024/1f2937/3b82f6?text=Captura+Tablet'" alt="LYD Tablet View"></div>
+                                <div class="device-screen"><img src="img/proyectos/lyd-tablet.png"
+                                        onerror="this.src='https://via.placeholder.com/768x1024/1f2937/3b82f6?text=Captura+Tablet'"
+                                        alt="LYD Tablet View"></div>
                             </div>
                             <div class="mockup-device mockup-phone">
-                                <div class="device-screen"><img src="img/proyectos/lyd-phone.png" onerror="this.src='https://via.placeholder.com/375x812/374151/3b82f6?text=Captura+M%C3%B3vil'" alt="LYD Mobile View"></div>
+                                <div class="device-screen"><img src="img/proyectos/lyd-phone.png"
+                                        onerror="this.src='https://via.placeholder.com/375x812/374151/3b82f6?text=Captura+M%C3%B3vil'"
+                                        alt="LYD Mobile View"></div>
                             </div>
                         </div>
                         <div class="project-info">
                             <h3>Pedidos LYD</h3>
-                            <p>Sistema de pedidos actualmente en producción. Encargado del análisis, diseño y solución de problemas.</p>
+                            <p>Sistema de pedidos actualmente en producción. Encargado del análisis, diseño y solución
+                                de problemas.</p>
                             <div class="project-links" style="margin-top: auto;">
-                                <a href="https://lyd.adso.pro" target="_blank" class="btn btn-primary" style="padding: 8px 16px; font-size: 0.9rem;">
-                                    <svg style="width:16px; height:16px; display:inline-block; vertical-align:text-bottom; margin-right:5px;" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
+                                <a href="https://lyd.secarvajal.com" target="_blank" class="btn btn-primary"
+                                    style="padding: 8px 16px; font-size: 0.9rem;">
+                                    <svg style="width:16px; height:16px; display:inline-block; vertical-align:text-bottom; margin-right:5px;"
+                                        fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                                    </svg>
                                     Ver Proyecto
                                 </a>
                             </div>
@@ -177,21 +453,33 @@
                     <div class="project-card" data-category="fullstack">
                         <div class="mockup-showcase">
                             <div class="mockup-device mockup-laptop">
-                                <div class="device-screen"><img src="https://via.placeholder.com/1920x1080/111827/3b82f6?text=Captura+Port%C3%A1til" alt="Zooki Laptop View"></div>
+                                <div class="device-screen"><img
+                                        src="https://via.placeholder.com/1920x1080/111827/3b82f6?text=Captura+Port%C3%A1til"
+                                        alt="Zooki Laptop View"></div>
                             </div>
                             <div class="mockup-device mockup-tablet">
-                                <div class="device-screen"><img src="https://via.placeholder.com/768x1024/1f2937/3b82f6?text=Captura+Tablet" alt="Zooki Tablet View"></div>
+                                <div class="device-screen"><img
+                                        src="https://via.placeholder.com/768x1024/1f2937/3b82f6?text=Captura+Tablet"
+                                        alt="Zooki Tablet View"></div>
                             </div>
                             <div class="mockup-device mockup-phone">
-                                <div class="device-screen"><img src="https://via.placeholder.com/375x812/374151/3b82f6?text=Captura+M%C3%B3vil" alt="Zooki Mobile View"></div>
+                                <div class="device-screen"><img
+                                        src="https://via.placeholder.com/375x812/374151/3b82f6?text=Captura+M%C3%B3vil"
+                                        alt="Zooki Mobile View"></div>
                             </div>
                         </div>
                         <div class="project-info">
                             <h3>Zooki</h3>
-                            <p>Proyecto integral de desarrollo de software donde actúo como desarrollador, analista y diseñador.</p>
+                            <p>Proyecto integral de desarrollo de software donde actúo como desarrollador, analista y
+                                diseñador.</p>
                             <div class="project-links" style="margin-top: auto;">
-                                <a href="#" target="_blank" class="btn btn-primary" style="padding: 8px 16px; font-size: 0.9rem;">
-                                    <svg style="width:16px; height:16px; display:inline-block; vertical-align:text-bottom; margin-right:5px;" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
+                                <a href="https://zooki.secarvajal.com" target="_blank" class="btn btn-primary"
+                                    style="padding: 8px 16px; font-size: 0.9rem;">
+                                    <svg style="width:16px; height:16px; display:inline-block; vertical-align:text-bottom; margin-right:5px;"
+                                        fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                                    </svg>
                                     Ver Proyecto
                                 </a>
                             </div>
@@ -201,32 +489,49 @@
                     <div class="project-card" data-category="backend">
                         <div class="mockup-showcase">
                             <div class="mockup-device mockup-laptop">
-                                <div class="device-screen"><img src="https://via.placeholder.com/1920x1080/111827/3b82f6?text=Captura+Port%C3%A1til" alt="SENA Laptop View"></div>
+                                <div class="device-screen"><img
+                                        src="https://via.placeholder.com/1920x1080/111827/3b82f6?text=Captura+Port%C3%A1til"
+                                        alt="SENA Laptop View"></div>
                             </div>
                             <div class="mockup-device mockup-tablet">
-                                <div class="device-screen"><img src="https://via.placeholder.com/768x1024/1f2937/3b82f6?text=Captura+Tablet" alt="SENA Tablet View"></div>
+                                <div class="device-screen"><img
+                                        src="https://via.placeholder.com/768x1024/1f2937/3b82f6?text=Captura+Tablet"
+                                        alt="SENA Tablet View"></div>
                             </div>
                             <div class="mockup-device mockup-phone">
-                                <div class="device-screen"><img src="https://via.placeholder.com/375x812/374151/3b82f6?text=Captura+M%C3%B3vil" alt="SENA Mobile View"></div>
+                                <div class="device-screen"><img
+                                        src="https://via.placeholder.com/375x812/374151/3b82f6?text=Captura+M%C3%B3vil"
+                                        alt="SENA Mobile View"></div>
                             </div>
                         </div>
                         <div class="project-info">
                             <h3>Juicios Evaluativos SENA</h3>
-                            <p>Sistema de Juicios Evaluativos para el SENA Caquetá. Ejercicio práctico resolviendo necesidades reales.</p>
+                            <p>Sistema de Juicios Evaluativos para el SENA Caquetá. Ejercicio práctico resolviendo
+                                necesidades reales.</p>
                             <div class="project-links" style="margin-top: auto;">
-                                <a href="#" target="_blank" class="btn btn-primary" style="padding: 8px 16px; font-size: 0.9rem;">
-                                    <svg style="width:16px; height:16px; display:inline-block; vertical-align:text-bottom; margin-right:5px;" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
+                                <a href="#" target="_blank" class="btn btn-primary"
+                                    style="padding: 8px 16px; font-size: 0.9rem;">
+                                    <svg style="width:16px; height:16px; display:inline-block; vertical-align:text-bottom; margin-right:5px;"
+                                        fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                                    </svg>
                                     Ver Proyecto
                                 </a>
                             </div>
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- Botón Ver Todos -->
                 <div style="text-align: center; margin-top: 50px;">
-                    <button id="btn-view-all-projects" class="btn btn-secondary" style="padding: 12px 30px; font-size: 1.1rem;">
-                        <svg style="width:20px; height:20px; display:inline-block; vertical-align:text-bottom; margin-right:8px;" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" /></svg>
+                    <button id="btn-view-all-projects" class="btn btn-secondary"
+                        style="padding: 12px 30px; font-size: 1.1rem;">
+                        <svg style="width:20px; height:20px; display:inline-block; vertical-align:text-bottom; margin-right:8px;"
+                            fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
+                        </svg>
                         Ver todos los proyectos
                     </button>
                 </div>
@@ -249,7 +554,8 @@
                         </div>
                         <div class="form-group">
                             <label for="message">Mensaje</label>
-                            <textarea id="message" name="message" rows="5" required placeholder="¿En qué puedo ayudarte?"></textarea>
+                            <textarea id="message" name="message" rows="5" required
+                                placeholder="¿En qué puedo ayudarte?"></textarea>
                         </div>
                         <button type="submit" class="btn btn-primary btn-block">Enviar Mensaje</button>
                     </form>
@@ -290,43 +596,55 @@
     </div>
 
     <script src="js/main.js"></script>
+    <script src="js/kinetic-grid.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script>
         // Inicializar Swiper 1 (Izquierda a Derecha)
         const swiper1 = new Swiper('.swiper-skills-1', {
             loop: true,
-            freeMode: true,
+            freeMode: {
+                enabled: true,
+                momentum: false
+            },
             spaceBetween: 25,
             slidesPerView: 'auto',
-            speed: 3000,
+            speed: 5000,
             autoplay: {
                 delay: 0,
                 disableOnInteraction: false,
                 reverseDirection: false
-            },
-            grabCursor: true
+            }
         });
 
         // Inicializar Swiper 2 (Derecha a Izquierda)
         const swiper2 = new Swiper('.swiper-skills-2', {
             loop: true,
-            freeMode: true,
+            freeMode: {
+                enabled: true,
+                momentum: false
+            },
             spaceBetween: 25,
             slidesPerView: 'auto',
-            speed: 3000,
+            speed: 5000,
             autoplay: {
                 delay: 0,
-                disableOnInteraction: false,
-                reverseDirection: true
-            },
-            grabCursor: true
+                disableOnInteraction: false
+            }
         });
 
-        // Pausar animaciones al pasar el mouse
-        document.querySelector('.swiper-skills-1').addEventListener('mouseenter', () => swiper1.autoplay.stop());
-        document.querySelector('.swiper-skills-1').addEventListener('mouseleave', () => swiper1.autoplay.start());
-        document.querySelector('.swiper-skills-2').addEventListener('mouseenter', () => swiper2.autoplay.stop());
-        document.querySelector('.swiper-skills-2').addEventListener('mouseleave', () => swiper2.autoplay.start());
+        // Pausar animaciones al pasar el mouse (solo en dispositivos que soportan hover/cursor)
+        if (window.matchMedia('(hover: hover)').matches) {
+            const skillSwiper1 = document.querySelector('.swiper-skills-1');
+            const skillSwiper2 = document.querySelector('.swiper-skills-2');
+            if (skillSwiper1) {
+                skillSwiper1.addEventListener('mouseenter', () => swiper1.autoplay.stop());
+                skillSwiper1.addEventListener('mouseleave', () => swiper1.autoplay.start());
+            }
+            if (skillSwiper2) {
+                skillSwiper2.addEventListener('mouseenter', () => swiper2.autoplay.stop());
+                skillSwiper2.addEventListener('mouseleave', () => swiper2.autoplay.start());
+            }
+        }
 
         // Lógica Modal "Ver Todos los Proyectos"
         const btnViewAll = document.getElementById('btn-view-all-projects');
@@ -335,11 +653,11 @@
         const allProjectsGrid = document.getElementById('all-projects-grid');
         const mainProjectsGrid = document.getElementById('main-projects-grid');
 
-        if(btnViewAll && allProjectsModal && allProjectsClose) {
+        if (btnViewAll && allProjectsModal && allProjectsClose) {
             btnViewAll.addEventListener('click', () => {
                 // Limpiar grid modal
                 allProjectsGrid.innerHTML = '';
-                
+
                 // Clonar todas las tarjetas
                 const cards = mainProjectsGrid.querySelectorAll('.project-card');
                 cards.forEach(card => {
@@ -356,9 +674,9 @@
                 const mainModal = document.getElementById('lightbox-modal');
                 const mainModalImg = document.getElementById('lightbox-img');
                 clonedImages.forEach(img => {
-                    img.addEventListener('click', function(e) {
+                    img.addEventListener('click', function (e) {
                         e.stopPropagation();
-                        if(mainModal && mainModalImg) {
+                        if (mainModal && mainModalImg) {
                             mainModal.classList.add('active');
                             mainModalImg.src = this.src;
                         }
@@ -374,12 +692,26 @@
                 document.body.style.overflow = 'auto'; // Restaurar scroll
             });
         }
+
+        // Inicializar Kinetic Grid Background (Estilo Framer)
+        new KineticGrid('kinetic-grid-canvas', '#hero', {
+            gridSize: 60,
+            dotSize: 1.5,
+            hoverRadius: 280,
+            repulsion: 45,
+            baseOpacity: 0.08,
+            hoverColor: { r: 59, g: 130, b: 246 }, // #3b82f6 (azul eléctrico)
+            gridColor: { r: 255, g: 255, b: 255 },
+            dotColor: { r: 255, g: 255, b: 255 }
+        });
     </script>
     <!-- Botón Flotante WhatsApp -->
-    <a href="https://wa.me/573000000000" target="_blank" class="whatsapp-float" aria-label="Chat on WhatsApp">
+    <a href="https://wa.me/573115265529" target="_blank" class="whatsapp-float" aria-label="Chat on WhatsApp">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" fill="currentColor">
-            <path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157.1zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/>
+            <path
+                d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157.1zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z" />
         </svg>
     </a>
 </body>
+
 </html>

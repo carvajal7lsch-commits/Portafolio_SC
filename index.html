@@ -11,7 +11,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;600;800&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="css/styles.css?v=2.1">
+    <link rel="stylesheet" href="css/styles.css?v=2.3">
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 </head>
@@ -21,7 +21,10 @@
     <!-- Header / Navigation -->
     <header class="header">
         <div class="container nav-container">
-            <a href="#" class="logo">Juan<span> Carvajal</span></a>
+            <a href="#" class="logo">
+                <img src="img/foto_CV.png?v=1" alt="Juan Carvajal" class="logo-avatar">
+                Juan<span> Carvajal</span>
+            </a>
             <nav class="nav">
                 <ul class="nav-list">
                     <li><a href="#hero" class="nav-link">Inicio</a></li>
@@ -56,201 +59,46 @@
                         necesidades del usuario.
                     </p>
                     <div class="hero-actions">
-                        <a href="cv_sebastian.html" target="_blank" class="btn btn-primary" id="download-cv">Ver CV</a>
+                        <a href="cv_sebastian.html" class="btn btn-primary" id="download-cv">Ver CV</a>
                         <a href="#projects" class="btn btn-secondary">Ver Proyectos</a>
                     </div>
                 </div>
                 <div class="hero-right-placeholder">
-                    <div class="tech-visualizer">
-                        <!-- Window Header -->
-                        <div class="visualizer-header">
-                            <div class="window-dots">
-                                <span class="dot red"></span>
-                                <span class="dot yellow"></span>
-                                <span class="dot green"></span>
-                            </div>
-                            <div class="visualizer-tabs">
-                                <button class="tab-btn active" data-tab="db">
-                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22c5.523 0 10-2.239 10-5V7c0-2.761-4.477-5-10-5S2 4.239 2 7v10c0 2.761 4.477 5 10 5z"></path><path d="M2 7c0 2.761 4.477 5 10 5s10-2.239 10-5"></path><path d="M2 12c0 2.761 4.477 5 10 5s10-2.239 10-5"></path></svg>
-                                    Schema.sql
-                                </button>
-                                <button class="tab-btn" data-tab="code">
-                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
-                                    Developer.php
-                                </button>
-                            </div>
-                        </div>
-                        
-                        <!-- Window Body -->
-                        <div class="visualizer-body">
-                            <!-- DB Schema Tab -->
-                            <div class="tab-content active" id="tab-db">
-                                <div class="db-schema-wrapper">
-                                    <!-- SVG lines connecting tables -->
-                                    <svg class="db-relations" width="100%" height="100%">
-                                        <!-- Line to Pedidos (usuario_id) -->
-                                        <path class="relation-line pulse-1" d="M 207 125 C 218 125, 218 87, 228 87" />
-                                        <!-- Line to Mascotas (dueño_id) -->
-                                        <path class="relation-line pulse-2" d="M 207 125 C 218 125, 218 247, 228 247" />
-                                        
-                                        <!-- Cardinality Nodes (1-to-N) - Alineados al borde exterior real -->
-                                        <!-- User side (1) -->
-                                        <g>
-                                            <circle cx="201" cy="125" r="6" fill="#0c0c12" stroke="#3b82f6" stroke-width="1.5" />
-                                            <text x="201" y="128" font-size="8px" fill="#3b82f6" text-anchor="middle" font-weight="bold" font-family="monospace">1</text>
-                                        </g>
-                                        <!-- Pedidos side (N) -->
-                                        <g>
-                                            <circle cx="234" cy="87" r="6" fill="#0c0c12" stroke="#8b5cf6" stroke-width="1.5" />
-                                            <text x="234" y="90" font-size="8px" fill="#8b5cf6" text-anchor="middle" font-weight="bold" font-family="monospace">N</text>
-                                        </g>
-                                        <!-- Mascotas side (N) -->
-                                        <g>
-                                            <circle cx="234" cy="247" r="6" fill="#0c0c12" stroke="#10b981" stroke-width="1.5" />
-                                            <text x="234" y="250" font-size="8px" fill="#10b981" text-anchor="middle" font-weight="bold" font-family="monospace">N</text>
-                                        </g>
-                                    </svg>
-                                    
-                                    <!-- Table 1: Users -->
-                                    <div class="db-table-card" style="top: 80px; left: 15px;">
-                                        <div class="table-name">usuarios</div>
-                                        <ul class="table-fields">
-                                            <li class="pk">
-                                                <div class="field-left">
-                                                    <span class="field-dot"></span>
-                                                    <span class="field-name">id</span>
-                                                </div>
-                                                <div class="field-right">
-                                                    <svg class="key-icon" width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><path d="M7 2a5 5 0 0 0-5 5 5 5 0 0 0 4.1 4.9L2 16v4a2 2 0 0 0 2 2h4v-2h2v-2h2l3.1-3.1A5 5 0 0 0 22 7a5 5 0 0 0-5-5 5 5 0 0 0-5 5c0 .3.02.6.06.88L3.2 16.7A1.5 1.5 0 0 0 3 17.8v3.4c0 .4.3.7.7.7h3.4c.4 0 .8-.2 1.1-.5l2.2-2.2v-2h2v-2h2.2c.4 0 .8-.2 1.1-.5l2.2-2.2c.28.04.58.06.88.06a5 5 0 0 0 5-5 5 5 0 0 0-5-5zM17 9a2 2 0 1 1 0-4 2 2 0 0 1 0 4z"/></svg>
-                                                    <span class="type">INT</span>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="field-left">
-                                                    <span class="field-dot"></span>
-                                                    <span class="field-name">nombre</span>
-                                                </div>
-                                                <span class="type">VARCHAR</span>
-                                            </li>
-                                            <li>
-                                                <div class="field-left">
-                                                    <span class="field-dot"></span>
-                                                    <span class="field-name">email</span>
-                                                </div>
-                                                <span class="type">VARCHAR</span>
-                                            </li>
-                                        </ul>
+                    <div class="profile-3d-card" id="profile-card">
+                        <div class="card-glow"></div>
+                        <div class="card-inner">
+                            <div class="profile-frame">
+                                <div class="profile-frame-header">
+                                    <div class="window-dots">
+                                        <span class="dot red"></span>
+                                        <span class="dot yellow"></span>
+                                        <span class="dot green"></span>
                                     </div>
-                                    
-                                    <!-- Table 2: Pedidos -->
-                                    <div class="db-table-card" style="top: 15px; left: 240px;">
-                                        <div class="table-name">pedidos (LYD)</div>
-                                        <ul class="table-fields">
-                                            <li class="pk">
-                                                <div class="field-left">
-                                                    <span class="field-dot"></span>
-                                                    <span class="field-name">id</span>
-                                                </div>
-                                                <div class="field-right">
-                                                    <svg class="key-icon" width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><path d="M7 2a5 5 0 0 0-5 5 5 5 0 0 0 4.1 4.9L2 16v4a2 2 0 0 0 2 2h4v-2h2v-2h2l3.1-3.1A5 5 0 0 0 22 7a5 5 0 0 0-5-5 5 5 0 0 0-5 5c0 .3.02.6.06.88L3.2 16.7A1.5 1.5 0 0 0 3 17.8v3.4c0 .4.3.7.7.7h3.4c.4 0 .8-.2 1.1-.5l2.2-2.2v-2h2v-2h2.2c.4 0 .8-.2 1.1-.5l2.2-2.2c.28.04.58.06.88.06a5 5 0 0 0 5-5 5 5 0 0 0-5-5zM17 9a2 2 0 1 1 0-4 2 2 0 0 1 0 4z"/></svg>
-                                                    <span class="type">INT</span>
-                                                </div>
-                                            </li>
-                                            <li class="fk">
-                                                <div class="field-left">
-                                                    <span class="field-dot"></span>
-                                                    <span class="field-name">usuario_id</span>
-                                                </div>
-                                                <div class="field-right">
-                                                    <svg class="key-icon" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>
-                                                    <span class="type">INT</span>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="field-left">
-                                                    <span class="field-dot"></span>
-                                                    <span class="field-name">total</span>
-                                                </div>
-                                                <span class="type">DECIMAL</span>
-                                            </li>
-                                            <li>
-                                                <div class="field-left">
-                                                    <span class="field-dot"></span>
-                                                    <span class="field-name">estado</span>
-                                                </div>
-                                                <span class="type">VARCHAR</span>
-                                            </li>
-                                        </ul>
-                                    </div>
-                    
-                                    <!-- Table 3: Mascotas -->
-                                    <div class="db-table-card" style="top: 175px; left: 240px;">
-                                        <div class="table-name">mascotas (Zooki)</div>
-                                        <ul class="table-fields">
-                                            <li class="pk">
-                                                <div class="field-left">
-                                                    <span class="field-dot"></span>
-                                                    <span class="field-name">id</span>
-                                                </div>
-                                                <div class="field-right">
-                                                    <svg class="key-icon" width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><path d="M7 2a5 5 0 0 0-5 5 5 5 0 0 0 4.1 4.9L2 16v4a2 2 0 0 0 2 2h4v-2h2v-2h2l3.1-3.1A5 5 0 0 0 22 7a5 5 0 0 0-5-5 5 5 0 0 0-5 5c0 .3.02.6.06.88L3.2 16.7A1.5 1.5 0 0 0 3 17.8v3.4c0 .4.3.7.7.7h3.4c.4 0 .8-.2 1.1-.5l2.2-2.2v-2h2v-2h2.2c.4 0 .8-.2 1.1-.5l2.2-2.2c.28.04.58.06.88.06a5 5 0 0 0 5-5 5 5 0 0 0-5-5zM17 9a2 2 0 1 1 0-4 2 2 0 0 1 0 4z"/></svg>
-                                                    <span class="type">INT</span>
-                                                </div>
-                                            </li>
-                                            <li class="fk">
-                                                <div class="field-left">
-                                                    <span class="field-dot"></span>
-                                                    <span class="field-name">dueño_id</span>
-                                                </div>
-                                                <div class="field-right">
-                                                    <svg class="key-icon" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>
-                                                    <span class="type">INT</span>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="field-left">
-                                                    <span class="field-dot"></span>
-                                                    <span class="field-name">nombre</span>
-                                                </div>
-                                                <span class="type">VARCHAR</span>
-                                            </li>
-                                            <li>
-                                                <div class="field-left">
-                                                    <span class="field-dot"></span>
-                                                    <span class="field-name">especie</span>
-                                                </div>
-                                                <span class="type">VARCHAR</span>
-                                            </li>
-                                        </ul>
-                                    </div>
+                                    <span class="window-title">profile.jpg</span>
                                 </div>
-                            </div></div>
-                            
-                            <!-- Code Tab -->
-                            <div class="tab-content" id="tab-code">
-                                <pre class="code-editor"><code><span class="keyword">class</span> <span class="class-name">SebastianCarvajal</span> <span class="keyword">implements</span> <span class="class-name">Developer</span> {
-    <span class="keyword">private</span> <span class="variable">$location</span> = <span class="string">'Florencia, Caquetá'</span>;
-    <span class="keyword">private</span> <span class="variable">$skills</span> = [<span class="string">'PHP'</span>, <span class="string">'MySQL'</span>, <span class="string">'JS'</span>, <span class="string">'MVC'</span>];
-
-    <span class="keyword">public</span> <span class="keyword">function</span> <span class="function-name">buildSolution</span>(<span class="variable">$requirements</span>) {
-        <span class="keyword">return</span> <span class="keyword">new</span> <span class="class-name">CleanCode</span>([
-            <span class="string">'architecture'</span> => <span class="string">'MVC'</span>,
-            <span class="string">'quality'</span> => <span class="keyword">true</span>,
-            <span class="string">'scalability'</span> => <span class="keyword">true</span>
-        ]);
-    }
-}</code></pre>
+                                <div class="profile-frame-body">
+                                    <img src="img/foto_CV.png" alt="Sebastian Carvajal" class="profile-img">
+                                </div>
                             </div>
+                            
+                            <!-- Floating Tech Icons -->
+                            <div class="floating-tech-icon icon-1" title="PHP"><i class="devicon-php-plain"></i></div>
+                            <div class="floating-tech-icon icon-2" title="JavaScript"><i class="devicon-javascript-plain"></i></div>
+                            <div class="floating-tech-icon icon-3" title="MySQL"><i class="devicon-mysql-plain"></i></div>
+                            <div class="floating-tech-icon icon-4" title="HTML5"><i class="devicon-html5-plain"></i></div>
+                            <div class="floating-tech-icon icon-5" title="Git"><i class="devicon-git-plain"></i></div>
+                            <div class="floating-tech-icon icon-6" title="Figma"><i class="devicon-figma-plain"></i></div>
+                            <div class="floating-tech-icon icon-7" title="Docker"><i class="devicon-docker-plain"></i></div>
+                            <div class="floating-tech-icon icon-8" title="CSS3"><i class="devicon-css3-plain"></i></div>
                         </div>
                     </div>
                 </div>
-            </div>
         </section>
 
-        <!-- About Me / Philosophy -->
+        <!-- About Me / Biography -->
         <section id="about" class="about-section section-padding">
             <div class="container">
-                <h2 class="section-title">Mi <span class="highlight">Filosofía</span></h2>
+                <h2 class="section-title">Sobre <span class="highlight">Mí</span></h2>
                 <div class="about-grid">
                     <div class="about-card">
                         <div class="card-icon-wrapper">
@@ -260,19 +108,19 @@
                             </svg>
                         </div>
                         <h3>Arquitectura & Calidad</h3>
-                        <p>Mi propósito es mejorar en arquitectura de software para garantizar calidad, escalabilidad y
-                            soluciones eficaces en cada producto entregado.</p>
+                        <p>Mi propósito es aplicar patrones de diseño y arquitecturas limpias (como MVC) para garantizar calidad, escalabilidad y soluciones eficaces en cada producto entregado.</p>
                     </div>
                     <div class="about-card">
                         <div class="card-icon-wrapper">
                             <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-                                    d="M13 10V3L4 14h7v7l9-11h-7z" />
+                                    d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                    d="M12 11v6m0-6l-3 3m3-3l3 3" />
                             </svg>
                         </div>
-                        <h3>Innovación</h3>
-                        <p>Busco siempre cómo integrar innovación a mis soluciones, asegurando que además de funcionar
-                            perfectamente, destaquen por su valor.</p>
+                        <h3>Despliegue & DevOps</h3>
+                        <p>Experiencia controlando versiones con Git y empaquetando soluciones con Docker, garantizando un despliegue seguro, continuo y eficiente en la nube.</p>
                     </div>
                     <div class="about-card">
                         <div class="card-icon-wrapper">
@@ -284,8 +132,7 @@
                             </svg>
                         </div>
                         <h3>Educación</h3>
-                        <p>Tecnólogo en ADSO (SENA, finaliza 2027) y Bachiller Académico (2024, Col. Juana Velasquez).
-                            Resido en Florencia, Caquetá.</p>
+                        <p>Tecnólogo en ADSO (SENA, finaliza 2027) y Bachiller Académico (2024, Col. Juana Velasquez). Resido en Florencia, Caquetá.</p>
                     </div>
                     <div class="about-card">
                         <div class="card-icon-wrapper">
@@ -295,8 +142,7 @@
                             </svg>
                         </div>
                         <h3>Enfoque en el Usuario</h3>
-                        <p>Me enfoco en lo que el cliente o usuario necesita, adaptando mis desarrollos para ser lo más
-                            similar a sus requerimientos exactos.</p>
+                        <p>Me enfoco en lo que el cliente o usuario necesita, adaptando mis desarrollos para ser lo más similar a sus requerimientos exactos.</p>
                     </div>
                 </div>
             </div>
@@ -454,17 +300,17 @@
                         <div class="mockup-showcase">
                             <div class="mockup-device mockup-laptop">
                                 <div class="device-screen"><img
-                                        src="https://via.placeholder.com/1920x1080/111827/3b82f6?text=Captura+Port%C3%A1til"
+                                        src="img/proyectos/zooki-tablet.png"
                                         alt="Zooki Laptop View"></div>
                             </div>
                             <div class="mockup-device mockup-tablet">
                                 <div class="device-screen"><img
-                                        src="https://via.placeholder.com/768x1024/1f2937/3b82f6?text=Captura+Tablet"
+                                        src="img/proyectos/zooki-laptop.png"
                                         alt="Zooki Tablet View"></div>
                             </div>
                             <div class="mockup-device mockup-phone">
                                 <div class="device-screen"><img
-                                        src="https://via.placeholder.com/375x812/374151/3b82f6?text=Captura+M%C3%B3vil"
+                                        src="img/proyectos/zooki-phone.png"
                                         alt="Zooki Mobile View"></div>
                             </div>
                         </div>
@@ -486,30 +332,29 @@
                         </div>
                     </div>
                     <!-- Project 3 -->
-                    <div class="project-card" data-category="backend">
+                    <div class="project-card" data-category="fullstack">
                         <div class="mockup-showcase">
                             <div class="mockup-device mockup-laptop">
                                 <div class="device-screen"><img
-                                        src="https://via.placeholder.com/1920x1080/111827/3b82f6?text=Captura+Port%C3%A1til"
-                                        alt="SENA Laptop View"></div>
+                                        src="img/proyectos/encuestas-laptop.png"
+                                        alt="Encuestas Offline Laptop View"></div>
                             </div>
                             <div class="mockup-device mockup-tablet">
                                 <div class="device-screen"><img
-                                        src="https://via.placeholder.com/768x1024/1f2937/3b82f6?text=Captura+Tablet"
-                                        alt="SENA Tablet View"></div>
+                                        src="img/proyectos/encuestas-tablet.png"
+                                        alt="Encuestas Offline Tablet View"></div>
                             </div>
                             <div class="mockup-device mockup-phone">
                                 <div class="device-screen"><img
-                                        src="https://via.placeholder.com/375x812/374151/3b82f6?text=Captura+M%C3%B3vil"
-                                        alt="SENA Mobile View"></div>
+                                        src="img/proyectos/encuestas-phone.png"
+                                        alt="Encuestas Offline Mobile View"></div>
                             </div>
                         </div>
                         <div class="project-info">
-                            <h3>Juicios Evaluativos SENA</h3>
-                            <p>Sistema de Juicios Evaluativos para el SENA Caquetá. Ejercicio práctico resolviendo
-                                necesidades reales.</p>
+                            <h3>Encuestas Offline</h3>
+                            <p>Sistema de encuestas offline diseñado para la recolección de datos en campo sin necesidad de conexión activa a internet.</p>
                             <div class="project-links" style="margin-top: auto;">
-                                <a href="#" target="_blank" class="btn btn-primary"
+                                <a href="https://encuestas.secarvajal.com" target="_blank" class="btn btn-primary"
                                     style="padding: 8px 16px; font-size: 0.9rem;">
                                     <svg style="width:16px; height:16px; display:inline-block; vertical-align:text-bottom; margin-right:5px;"
                                         fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -542,23 +387,61 @@
         <section id="contact" class="contact-section section-padding">
             <div class="container">
                 <h2 class="section-title">Trabajemos <span class="highlight">Juntos</span></h2>
-                <div class="contact-wrapper">
-                    <form id="contact-form" class="contact-form">
-                        <div class="form-group">
-                            <label for="name">Nombre</label>
-                            <input type="text" id="name" name="name" required placeholder="Tu nombre">
+                <div class="contact-grid">
+                    <div class="contact-info-card">
+                        <h3>Información de Contacto</h3>
+                        <p class="contact-desc">¿Tienes un proyecto en mente o buscas un perfil profesional como el mío? Escríbeme y conversemos.</p>
+                        
+                        <div class="contact-details">
+                            <div class="contact-item">
+                                <div class="contact-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                                </div>
+                                <div class="contact-text">
+                                    <span>Correo Electrónico</span>
+                                    <a href="mailto:carvajal7lsch@gmail.com">carvajal7lsch@gmail.com</a>
+                                </div>
+                            </div>
+                            
+                            <div class="contact-item">
+                                <div class="contact-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                                </div>
+                                <div class="contact-text">
+                                    <span>WhatsApp</span>
+                                    <a href="https://wa.me/573115265529" target="_blank">+57 311 526 5529</a>
+                                </div>
+                            </div>
+                            
+                            <div class="contact-item">
+                                <div class="contact-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                                </div>
+                                <div class="contact-text">
+                                    <span>Ubicación</span>
+                                    <span>Florencia, Caquetá, Colombia</span>
+                                </div>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label for="email">Correo Electrónico</label>
-                            <input type="email" id="email" name="email" required placeholder="tu@correo.com">
-                        </div>
-                        <div class="form-group">
-                            <label for="message">Mensaje</label>
-                            <textarea id="message" name="message" rows="5" required
-                                placeholder="¿En qué puedo ayudarte?"></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary btn-block">Enviar Mensaje</button>
-                    </form>
+                    </div>
+                    
+                    <div class="contact-form-card">
+                        <form id="contact-form" class="contact-form">
+                            <div class="form-group">
+                                <label for="name">Nombre</label>
+                                <input type="text" id="name" name="name" required placeholder="Tu nombre">
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Correo Electrónico</label>
+                                <input type="email" id="email" name="email" required placeholder="tu@correo.com">
+                            </div>
+                            <div class="form-group">
+                                <label for="message">Mensaje</label>
+                                <textarea id="message" name="message" rows="4" required placeholder="¿En qué puedo ayudarte?"></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-block">Enviar Mensaje</button>
+                        </form>
+                    </div>
                 </div>
             </div>
         </section>
@@ -566,13 +449,38 @@
 
     <footer class="footer">
         <div class="container">
-            <div class="social-links">
-                <a href="https://github.com/carvajal7lsch-commits/" target="_blank">GitHub</a>
-                <a href="https://www.linkedin.com/in/sᴇʙᴀsᴛɪᴀɴ-cᴀʀᴠᴀᴊᴀʟ-0b9059369" target="_blank">LinkedIn</a>
-                <a href="mailto:carvajal7lsch@gmail.com">carvajal7lsch@gmail.com</a>
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="#" class="logo">Juan<span> Carvajal</span></a>
+                    <p class="brand-desc">Desarrollador de Software especializado en crear soluciones escalables, eficientes y de alta calidad técnica.</p>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Navegación</h4>
+                    <ul>
+                        <li><a href="#hero">Inicio</a></li>
+                        <li><a href="#about">Sobre Mí</a></li>
+                        <li><a href="#skills">Habilidades</a></li>
+                        <li><a href="#projects">Proyectos</a></li>
+                        <li><a href="cv_sebastian.html">Mi CV</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-socials">
+                    <h4>Contacto & Social</h4>
+                    <ul>
+                        <li><a href="https://github.com/carvajal7lsch-commits/" target="_blank"><svg style="width: 18px; height: 18px; display: inline-block; vertical-align: text-bottom; margin-right: 8px;" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>GitHub</a></li>
+                        <li><a href="https://www.linkedin.com/in/sᴇʙᴀsᴛɪᴀɴ-cᴀʀᴠᴀᴊᴀʟ-0b9059369" target="_blank"><svg style="width: 18px; height: 18px; display: inline-block; vertical-align: text-bottom; margin-right: 8px;" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.779-1.75-1.75s.784-1.75 1.75-1.75 1.75.779 1.75 1.75-.784 1.75-1.75 1.75zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>LinkedIn</a></li>
+                        <li><a href="mailto:carvajal7lsch@gmail.com"><svg style="width: 18px; height: 18px; display: inline-block; vertical-align: text-bottom; margin-right: 8px;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>Gmail</a></li>
+                        <li><a href="https://wa.me/573115265529" target="_blank"><svg style="width: 18px; height: 18px; display: inline-block; vertical-align: text-bottom; margin-right: 8px;" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.717-1.458L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.625 1.451 5.403.002 9.803-4.381 9.805-9.786.001-2.593-1.006-5.032-2.839-6.867-1.833-1.834-4.276-2.843-6.871-2.844-5.409 0-9.813 4.387-9.816 9.791-.001 1.902.486 3.758 1.411 5.378l-.946 3.454 3.631-.951zm12.39-4.887c-.303-.151-1.793-.884-2.073-.984-.28-.102-.483-.151-.686.151-.204.304-.787.984-.965 1.185-.177.202-.355.228-.658.077-.303-.152-1.279-.472-2.438-1.506-.902-.805-1.51-1.8-1.687-2.102-.178-.303-.019-.467.132-.617.136-.134.303-.354.455-.53.152-.178.204-.303.305-.506.102-.202.051-.38-.025-.531-.076-.151-.687-1.657-.941-2.269-.247-.594-.5-.513-.686-.523-.178-.009-.381-.01-.584-.01-.203 0-.533.076-.812.38-.28.304-1.066 1.042-1.066 2.541s1.092 2.946 1.243 3.149c.153.202 2.15 3.284 5.21 4.604.728.314 1.296.502 1.74.643.73.232 1.396.199 1.922.121.587-.087 1.794-.733 2.048-1.439.254-.706.254-1.314.178-1.44-.077-.127-.279-.203-.583-.354z"/></svg>WhatsApp</a></li>
+                    </ul>
+                </div>
             </div>
-            <p>&copy; <span id="current-year"></span> Juan Sebastian Carvajal. Todos los derechos reservados.</p>
-            <p class="footer-note">Florencia, Caquetá. Diseñado y construido garantizando calidad.</p>
+            
+            <div class="footer-bottom">
+                <p>&copy; <span id="current-year"></span> Juan Sebastian Carvajal. Todos los derechos reservados.</p>
+                <p class="footer-note">Florencia, Caquetá, Colombia. Diseñado y construido con las mejores prácticas.</p>
+            </div>
         </div>
     </footer>
 
@@ -595,7 +503,7 @@
         </div>
     </div>
 
-    <script src="js/main.js"></script>
+    <script src="js/main.js?v=2.3"></script>
     <script src="js/kinetic-grid.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script>

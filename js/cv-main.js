@@ -14,16 +14,15 @@ document.addEventListener('DOMContentLoaded', () => {
     
     const width = window.innerWidth;
     
-    // We only scale down if screen is smaller than A4 container width (approx 830px to account for body padding/borders)
+    // We only scale down if screen is smaller than A4 container width (approx 830px)
     if (width < 830) {
-      const scale = (width - 24) / cvPage.offsetWidth;
-      cvPage.style.transform = `scale(${scale})`;
-      cvPage.style.transformOrigin = 'top center';
-      
-      // Calculate lost height from scaling to avoid empty space below
-      const lostHeight = cvPage.offsetHeight * (1 - scale);
-      cvPage.style.marginBottom = `-${lostHeight}px`;
+      const scale = (width - 24) / 794;
+      cvPage.style.zoom = scale;
+      cvPage.style.transform = '';
+      cvPage.style.transformOrigin = '';
+      cvPage.style.marginBottom = '';
     } else {
+      cvPage.style.zoom = '';
       cvPage.style.transform = '';
       cvPage.style.transformOrigin = '';
       cvPage.style.marginBottom = '';

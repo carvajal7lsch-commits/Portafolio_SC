@@ -45,6 +45,7 @@ body {
   align-items: center;
   gap: 0.5rem;
   transition: background 0.2s;
+  text-decoration: none;
 }
 
 .btn:hover { background: #1d4ed8; }
@@ -305,6 +306,9 @@ body {
     overflow: hidden;
     display: flex !important;
     flex-direction: row !important;
+    transform: none !important;
+    zoom: 1 !important;
+    margin-bottom: 0 !important;
   }
   .sidebar {
     width: 35% !important;
@@ -327,10 +331,20 @@ body {
     overflow-x: hidden;
   }
   .toolbar {
-    width: 95%;
+    width: 90%;
     max-width: 21cm;
     margin: 0 auto 1rem;
-    padding: 0 10px;
+    padding: 0;
+    display: flex;
     justify-content: space-between;
+  }
+  .cv-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    overflow: visible;
+  }
+  .cv-page {
+    margin: 0 auto;
   }
 }

@@ -151,4 +151,88 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     }
+
+    // 8. Contact Form Submission via FormSubmit AJAX
+    const contactForm = document.getElementById('contact-form');
+    if (contactForm) {
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const submitBtn = contactForm.querySelector('button[type="submit"]');
+            const originalText = submitBtn.textContent;
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Enviando...';
+            
+            const formData = new FormData(contactForm);
+            
+            fetch('https://formsubmit.co/ajax/carvajal7lsch@gmail.com', {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success === "true" || data.success === true) {
+                    alert('¡Mensaje enviado con éxito! Me pondré en contacto contigo pronto.');
+                    contactForm.reset();
+                } else {
+                    alert('Hubo un problema al enviar el mensaje. Por favor intenta de nuevo.');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Hubo un error al enviar tu mensaje. Intenta de nuevo más tarde.');
+            })
+            .finally(() => {
+                submitBtn.disabled = false;
+                submitBtn.textContent = originalText;
+            });
+        });
+    }
+
+    // 9. 3D Parallax Tilt Effect for Profile Card
+    const card = document.getElementById('profile-card');
+    if (card) {
+        card.addEventListener('mousemove', (e) => {
+            const cardRect = card.getBoundingClientRect();
+            const cardWidth = cardRect.width;
+            const cardHeight = cardRect.height;
+            
+            // Posición del mouse relativa al centro de la tarjeta
+            const mouseX = e.clientX - cardRect.left - cardWidth / 2;
+            const mouseY = e.clientY - cardRect.top - cardHeight / 2;
+            
+            // Valores de rotación (máximo 15 grados)
+            const rotateX = -(mouseY / cardHeight) * 20;
+            const rotateY = (mouseX / cardWidth) * 20;
+            
+            card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+            
+            // Efecto de brillo que sigue el cursor
+            const glow = card.querySelector('.card-glow');
+            if (glow) {
+                const percentX = ((e.clientX - cardRect.left) / cardWidth) * 100;
+                const percentY = ((e.clientY - cardRect.top) / cardHeight) * 100;
+                glow.style.background = `radial-gradient(circle at ${percentX}% ${percentY}%, rgba(59, 130, 246, 0.25) 0%, transparent 60%)`;
+            }
+        });
+        
+        card.addEventListener('mouseleave', () => {
+            // Restaurar transformaciones suavemente
+            card.style.transition = 'transform 0.5s ease';
+            card.style.transform = 'rotateX(0deg) rotateY(0deg)';
+            
+            const glow = card.querySelector('.card-glow');
+            if (glow) {
+                glow.style.background = `radial-gradient(circle at 50% 50%, rgba(59, 130, 246, 0.15) 0%, transparent 60%)`;
+            }
+            
+            // Quitar transición tras resetear
+            setTimeout(() => {
+                card.style.transition = 'transform 0.1s ease';
+            }, 500);
+        });
+    }
 });

@@ -11,13 +11,17 @@
 
   <!-- Toolbar para acciones (no se imprime) -->
   <div class="toolbar">
-    <a href="index.html" class="btn btn-outline">Volver al inicio</a>
+    <a href="index.html" class="btn btn-outline" data-i18n="nav_back">Volver al inicio</a>
+    <div class="lang-switcher">
+      <button class="lang-btn active" data-lang="es">ES</button>
+      <button class="lang-btn" data-lang="en">EN</button>
+    </div>
     <button class="btn" id="print-btn">
       <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
         <path d="M5 1a2 2 0 0 0-2 2v1h10V3a2 2 0 0 0-2-2H5zm6 8H5a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-3a1 1 0 0 0-1-1z"/>
         <path d="M0 7a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2h-1v-2a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v2H2a2 2 0 0 1-2-2V7zm2.5 1a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1z"/>
       </svg>
-      Descargar PDF
+      <span data-i18n="cv_btn_download">Descargar PDF</span>
     </button>
   </div>
 
@@ -32,7 +36,7 @@
       </div>
 
       <div class="sidebar-section">
-        <h3 class="sidebar-title">CONTACTO</h3>
+        <h3 class="sidebar-title" data-i18n="cv_section_contact">CONTACTO</h3>
         <ul class="sidebar-list">
           <li>
             <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
@@ -50,7 +54,7 @@
       </div>
 
       <div class="sidebar-section">
-        <h3 class="sidebar-title">SITIO WEB</h3>
+        <h3 class="sidebar-title" data-i18n="cv_section_website">SITIO WEB</h3>
         <ul class="sidebar-list">
           <li>
             <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
@@ -64,36 +68,36 @@
       </div>
 
       <div class="sidebar-section">
-        <h3 class="sidebar-title">IDIOMAS</h3>
+        <h3 class="sidebar-title" data-i18n="cv_section_languages">IDIOMAS</h3>
         <ul class="sidebar-list">
           <li>
-            <strong>Español</strong>
-            <span class="text-sm">Nativo</span>
+            <strong data-i18n="cv_lang_es">Español</strong>
+            <span class="text-sm" data-i18n="cv_lang_es_level">Nativo</span>
           </li>
           <li>
-            <strong>Inglés</strong>
-            <span class="text-sm">A1 (Básico / SENA)</span>
+            <strong data-i18n="cv_lang_en">Inglés</strong>
+            <span class="text-sm" data-i18n="cv_lang_en_level">A1 (Básico / SENA)</span>
           </li>
         </ul>
       </div>
       
       <div class="sidebar-section">
-        <h3 class="sidebar-title">HABILIDADES</h3>
+        <h3 class="sidebar-title" data-i18n="cv_section_skills">HABILIDADES</h3>
         <ul class="sidebar-list">
           <li style="flex-direction: column; align-items: flex-start; gap: 0.2rem;">
-            <strong>Backend</strong>
+            <strong data-i18n="cv_skill_backend">Backend</strong>
             <span class="text-sm">PHP, MySQL, MVC</span>
           </li>
           <li style="flex-direction: column; align-items: flex-start; gap: 0.2rem;">
-            <strong>Frontend</strong>
+            <strong data-i18n="cv_skill_frontend">Frontend</strong>
             <span class="text-sm">HTML, CSS, JS</span>
           </li>
           <li style="flex-direction: column; align-items: flex-start; gap: 0.2rem;">
-            <strong>Diseño</strong>
+            <strong data-i18n="cv_skill_design">Diseño</strong>
             <span class="text-sm">Figma, UI/UX, draw.io</span>
           </li>
           <li style="flex-direction: column; align-items: flex-start; gap: 0.2rem;">
-            <strong>Herramientas</strong>
+            <strong data-i18n="cv_skill_tools">Herramientas</strong>
             <span class="text-sm">Git, Docker, SonarQube, IA</span>
           </li>
         </ul>
@@ -106,25 +110,25 @@
       
       <header class="cv-header">
         <h1>JUAN SEBASTIÁN<br>CARVAJAL</h1>
-        <h2>DESARROLLADOR DE SOFTWARE</h2>
+        <h2 data-i18n="cv_role">DESARROLLADOR DE SOFTWARE</h2>
       </header>
 
       <section class="section">
-        <h3 class="section-title">SOBRE MÍ</h3>
-        <p class="profile-text">
+        <h3 class="section-title" data-i18n="cv_about_title">SOBRE MÍ</h3>
+        <p class="profile-text" data-i18n="cv_about_desc">
           Desarrollador de software enfocado en construir productos que no solo funcionen, sino que destaquen por su diseño y estructura. Me apasiona la arquitectura limpia, el código escalable y garantizar una experiencia de usuario que se adapte exactamente a las necesidades. Busco siempre encontrar el equilibrio entre la solución técnica eficaz y la innovación, asegurando máxima calidad en cada entrega.
         </p>
       </section>
 
       <section class="section">
-        <h3 class="section-title">EXPERIENCIA</h3>
+        <h3 class="section-title" data-i18n="cv_experience_title">EXPERIENCIA</h3>
         
         <div class="timeline-item">
           <div class="timeline-date">2024 - Act</div>
           <div class="timeline-content">
-            <h4>Desarrollador Principal</h4>
-            <h5>Proyectos Independientes y Académicos</h5>
-            <p>
+            <h4 data-i18n="cv_exp_role">Desarrollador Principal</h4>
+            <h5 data-i18n="cv_exp_company">Proyectos Independientes y Académicos</h5>
+            <p data-i18n="cv_exp_desc">
               Responsable de todo el ciclo de desarrollo en diversos proyectos: análisis de requerimientos, diseño de arquitectura (MVC), modelado de bases de datos, implementación Full Stack y despliegue. He trabajado enfocándome en soluciones eficientes y resolución de problemas técnicos complejos.
             </p>
           </div>
@@ -132,13 +136,13 @@
       </section>
 
       <section class="section">
-        <h3 class="section-title">PROYECTOS DESTACADOS</h3>
+        <h3 class="section-title" data-i18n="cv_projects_title">PROYECTOS DESTACADOS</h3>
         
         <div class="timeline-item">
           <div class="timeline-date">PHP / JS</div>
           <div class="timeline-content">
-            <h4>Pedidos LYD</h4>
-            <p>
+            <h4 data-i18n="project1_title">Pedidos LYD</h4>
+            <p data-i18n="cv_proj1_desc">
               Sistema integral de gestión de pedidos, actualmente en producción. Desarrollo completo encargado del análisis, diseño de arquitectura y solución de requerimientos en tiempo real.
             </p>
           </div>
@@ -147,8 +151,8 @@
         <div class="timeline-item">
           <div class="timeline-date">Full Stack</div>
           <div class="timeline-content">
-            <h4>Zooki</h4>
-            <p>
+            <h4 data-i18n="project2_title">Zooki</h4>
+            <p data-i18n="cv_proj2_desc">
               Aplicación de gestión y agendamiento veterinario. Proyecto Full Stack integral participando activamente en el diseño, análisis de usuario y desarrollo de software con MVC.
             </p>
           </div>
@@ -157,30 +161,50 @@
         <div class="timeline-item">
           <div class="timeline-date">Full Stack</div>
           <div class="timeline-content">
-            <h4>Encuestas Offline</h4>
-            <p>
+            <h4 data-i18n="project3_title">Encuestas Offline</h4>
+            <p data-i18n="cv_proj3_desc">
               Sistema de encuestas offline diseñado para la recolección de datos en campo sin necesidad de conexión activa a internet.
+            </p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-date">JS / OCR</div>
+          <div class="timeline-content">
+            <h4 data-i18n="project4_title">Lector OCR</h4>
+            <p data-i18n="project4_desc">
+              Aplicación para el reconocimiento óptico de caracteres en imágenes y documentos, extrayendo texto digitalizado con alta precisión.
+            </p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-date">PHP / MySQL</div>
+          <div class="timeline-content">
+            <h4 data-i18n="project5_title">Juicios Evaluativos SENA</h4>
+            <p data-i18n="project5_desc">
+              Plataforma de gestión académica para el registro y consulta de juicios evaluativos de aprendices en el SENA.
             </p>
           </div>
         </div>
       </section>
 
       <section class="section">
-        <h3 class="section-title">EDUCACIÓN</h3>
+        <h3 class="section-title" data-i18n="cv_education_title">EDUCACIÓN</h3>
         
         <div class="timeline-item">
           <div class="timeline-date">2025 - 2027</div>
           <div class="timeline-content">
-            <h4>Tecnólogo en Análisis y Desarrollo de Software</h4>
-            <h5>SENA — Florencia</h5>
+            <h4 data-i18n="cv_edu_adso">Tecnólogo en Análisis y Desarrollo de Software</h4>
+            <h5 data-i18n="cv_edu_sena">SENA — Florencia</h5>
           </div>
         </div>
 
         <div class="timeline-item">
           <div class="timeline-date">2024</div>
           <div class="timeline-content">
-            <h4>Bachiller Académico</h4>
-            <h5>Institución Educativa Juana Velásquez</h5>
+            <h4 data-i18n="cv_edu_bachiller">Bachiller Académico</h4>
+            <h5 data-i18n="cv_edu_school">Institución Educativa Juana Velásquez</h5>
           </div>
         </div>
       </section>
@@ -190,6 +214,7 @@
   </div>
   </div>
 
+  <script src="js/translations.js"></script>
   <script src="js/cv-main.js?v=2.2"></script>
 </body>
 </html>

@@ -1,23 +1,77 @@
 document.addEventListener('DOMContentLoaded', () => {
     
+    // 0. Language Switcher Logic
+    let currentLang = localStorage.getItem('portfolio-lang') || 'es';
+
+    function setLanguage(lang) {
+        currentLang = lang;
+        localStorage.setItem('portfolio-lang', lang);
+        
+        // Update elements with data-i18n
+        document.querySelectorAll('[data-i18n]').forEach(el => {
+            const key = el.getAttribute('data-i18n');
+            if (translations[lang] && translations[lang][key]) {
+                if (el.tagName === 'TITLE') {
+                    document.title = translations[lang][key];
+                } else {
+                    el.innerHTML = translations[lang][key];
+                }
+            }
+        });
+
+        // Update placeholders
+        document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+            const key = el.getAttribute('data-i18n-placeholder');
+            if (translations[lang] && translations[lang][key]) {
+                el.setAttribute('placeholder', translations[lang][key]);
+            }
+        });
+
+        // Update active class on buttons
+        document.querySelectorAll('.lang-switcher .lang-btn').forEach(btn => {
+            if (btn.getAttribute('data-lang') === lang) {
+                btn.classList.add('active');
+            } else {
+                btn.classList.remove('active');
+            }
+        });
+        
+        // Update html lang attribute
+        document.documentElement.lang = lang;
+    }
+
+    // Bind event listeners to language switcher buttons
+    document.querySelectorAll('.lang-switcher .lang-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const lang = btn.getAttribute('data-lang');
+            setLanguage(lang);
+        });
+    });
+
+    // Initialize default language
+    setLanguage(currentLang);
+    
     // 1. Set current year in footer
     const yearSpan = document.getElementById('current-year');
     if (yearSpan) {
         yearSpan.textContent = new Date().getFullYear();
     }
 
-    // 2. Sticky Header
+    // 2. Sticky Header & Scroll Indicator Fade Out
     const header = document.querySelector('.header');
+    const scrollIndicator = document.querySelector('.scroll-indicator');
     window.addEventListener('scroll', () => {
         if (window.scrollY > 50) {
             header.classList.add('scrolled');
+            if (scrollIndicator) scrollIndicator.classList.add('scrolled');
         } else {
             header.classList.remove('scrolled');
+            if (scrollIndicator) scrollIndicator.classList.remove('scrolled');
         }
     });
 
     // 3. Smooth Scrolling for Navigation Links
-    const navLinks = document.querySelectorAll('.nav-link, .btn-secondary');
+    const navLinks = document.querySelectorAll('.nav-link, .btn-secondary, .scroll-indicator');
     navLinks.forEach(link => {
         link.addEventListener('click', function(e) {
             const targetId = this.getAttribute('href');
@@ -159,9 +213,8 @@ document.addEventListener('DOMContentLoaded', () => {
             e.preventDefault();
             
             const submitBtn = contactForm.querySelector('button[type="submit"]');
-            const originalText = submitBtn.textContent;
             submitBtn.disabled = true;
-            submitBtn.textContent = 'Enviando...';
+            submitBtn.textContent = translations[currentLang].contact_form_sending;
             
             const formData = new FormData(contactForm);
             
@@ -175,19 +228,19 @@ document.addEventListener('DOMContentLoaded', () => {
             .then(response => response.json())
             .then(data => {
                 if (data.success === "true" || data.success === true) {
-                    alert('¡Mensaje enviado con éxito! Me pondré en contacto contigo pronto.');
+                    alert(translations[currentLang].contact_form_success);
                     contactForm.reset();
                 } else {
-                    alert('Hubo un problema al enviar el mensaje. Por favor intenta de nuevo.');
+                    alert(translations[currentLang].contact_form_error);
                 }
             })
             .catch(error => {
                 console.error('Error:', error);
-                alert('Hubo un error al enviar tu mensaje. Intenta de nuevo más tarde.');
+                alert(translations[currentLang].contact_form_failed);
             })
             .finally(() => {
                 submitBtn.disabled = false;
-                submitBtn.textContent = originalText;
+                submitBtn.textContent = translations[currentLang].contact_form_submit;
             });
         });
     }

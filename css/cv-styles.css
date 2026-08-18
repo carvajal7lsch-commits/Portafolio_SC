@@ -58,6 +58,38 @@ body {
 
 .btn-outline:hover { background: #f9fafb; }
 
+/* Selector de Idiomas en Toolbar */
+.toolbar .lang-switcher {
+  display: flex;
+  align-items: center;
+  background: white;
+  border: 1px solid var(--border);
+  padding: 2px;
+  border-radius: 6px;
+}
+
+.toolbar .lang-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-light);
+  font-family: inherit;
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.toolbar .lang-btn:hover {
+  color: var(--text-dark);
+}
+
+.toolbar .lang-btn.active {
+  background: var(--accent);
+  color: white;
+}
+
 /* Contenedor del CV */
 .cv-container {
   width: 100%;

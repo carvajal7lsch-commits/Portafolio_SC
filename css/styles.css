@@ -210,6 +210,59 @@ h1, h2, h3, h4 {
 }
 
 /* =========================================
+   SELECTOR DE IDIOMAS
+========================================= */
+.lang-switcher {
+    display: flex;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    padding: 3px;
+    border-radius: 30px;
+    margin-left: 20px;
+    transition: var(--transition-fast);
+}
+
+.lang-switcher:hover {
+    border-color: rgba(59, 130, 246, 0.3);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.lang-btn {
+    background: transparent;
+    border: none;
+    color: var(--text-secondary);
+    font-family: var(--font-main);
+    font-size: 0.78rem;
+    font-weight: 700;
+    padding: 5px 12px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    letter-spacing: 0.05em;
+}
+
+.lang-btn:hover {
+    color: #ffffff;
+}
+
+.lang-btn.active {
+    background: var(--accent-color);
+    color: #ffffff;
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+}
+
+/* Responsividad del selector */
+@media (max-width: 768px) {
+    .lang-switcher {
+        margin-left: auto;
+        margin-right: 15px;
+    }
+}
+
+/* =========================================
    HERO SECTION
 ========================================= */
 .hero-section {
@@ -270,6 +323,70 @@ h1, h2, h3, h4 {
     justify-content: flex-end;
     align-items: center;
     z-index: 2;
+}
+
+/* Scroll Down Indicator */
+.scroll-indicator {
+    position: absolute;
+    bottom: 25px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+    z-index: 10;
+    transition: opacity var(--transition-smooth), transform var(--transition-smooth);
+    text-decoration: none;
+}
+
+/* Scrolled/hidden state */
+.scroll-indicator.scrolled {
+    opacity: 0;
+    pointer-events: none;
+    transform: translate(-50%, 15px);
+}
+
+.scroll-indicator span {
+    font-size: 0.72rem;
+    color: var(--text-secondary);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-family: var(--font-heading);
+    font-weight: 600;
+    transition: color var(--transition-fast);
+}
+
+.scroll-indicator .scroll-arrow {
+    width: 26px;
+    height: 26px;
+    color: var(--text-secondary);
+    animation: bounce-arrow 1.6s infinite ease-in-out;
+    transition: color var(--transition-fast);
+}
+
+.scroll-indicator:hover span {
+    color: var(--text-primary);
+}
+
+.scroll-indicator:hover .scroll-arrow {
+    color: var(--text-primary);
+}
+
+@keyframes bounce-arrow {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(6px);
+    }
+}
+
+@media (max-width: 900px), (max-height: 620px) {
+    .scroll-indicator {
+        display: none !important;
+    }
 }
 
 /* Contenedor del Visualizador */
@@ -1262,10 +1379,18 @@ h1, h2, h3, h4 {
     box-shadow: 0 5px 15px rgba(0,0,0,0.3);
 }
 
+
 .floating-tech-icon:hover {
     color: var(--accent-color);
     border-color: rgba(59, 130, 246, 0.4);
     box-shadow: 0 0 15px rgba(59, 130, 246, 0.3);
+}
+
+.floating-tech-icon.active {
+    color: var(--accent-color);
+    border-color: var(--accent-color);
+    box-shadow: 0 0 15px var(--accent-glow);
+    background: rgba(59, 130, 246, 0.15);
 }
 
 .floating-tech-icon.icon-1 {
@@ -1580,8 +1705,8 @@ h1, h2, h3, h4 {
     color: var(--accent-color);
 }
 
-/* Ocultar proyectos despues del 4to en la grid principal */
-.main-projects-grid .project-card:nth-child(n+5) {
+/* Ocultar proyectos despues del 6to en la grid principal */
+.main-projects-grid .project-card:nth-child(n+7) {
     display: none !important;
 }
 
@@ -1636,3 +1761,35 @@ h1, h2, h3, h4 {
         height: 38px;
     }
 }
+
+/* =========================================
+   ABOUT SECTION DECORATIVE 3D PARTICLES LOGO
+   ========================================= */
+.about-floating-logo {
+    position: absolute;
+    top: -45px;
+    right: 20px;
+    width: 220px;
+    height: 220px;
+    z-index: 10;
+}
+
+.about-floating-logo canvas {
+    width: 100%;
+    height: 100%;
+    display: block;
+    background: transparent;
+    cursor: pointer;
+}
+
+@media (max-width: 992px) {
+    .about-floating-logo {
+        position: relative;
+        top: 0;
+        right: 0;
+        margin: -20px auto 30px auto;
+        width: 180px;
+        height: 180px;
+    }
+}
+

@@ -44,11 +44,12 @@ const translations = {
         project2_desc: "Proyecto integral de desarrollo de software donde actúo como desarrollador, analista y diseñador.",
         project3_title: "Encuestas Offline",
         project3_desc: "Sistema de encuestas offline diseñado para la recolección de datos en campo sin necesidad de conexión activa a internet.",
-        project4_title: "Lector OCR",
-        project4_desc: "Aplicación para el reconocimiento óptico de caracteres en imágenes y documentos, extrayendo texto digitalizado con alta precisión.",
+        project4_title: "Auditoría de Cédulas — OCR vs Excel",
+        project4_desc: "Sistema de escritorio que audita y concilia documentos de identidad escaneados contra archivos Excel utilizando OCR.",
         project5_title: "Juicios Evaluativos SENA",
         project5_desc: "Plataforma de gestión académica para el registro y consulta de juicios evaluativos de aprendices en el SENA.",
         btn_view_project: "Ver Proyecto",
+        btn_download_zip: "Descargar ZIP",
         btn_view_all_projects: "Ver todos los proyectos",
 
         // Contact Section
@@ -160,11 +161,12 @@ const translations = {
         project2_desc: "Comprehensive software development project acting as developer, analyst, and designer.",
         project3_title: "Offline Surveys",
         project3_desc: "Offline survey system designed for field data collection without active internet connection.",
-        project4_title: "OCR Reader",
-        project4_desc: "Application for optical character recognition in images and documents, extracting digitized text with high accuracy.",
+        project4_title: "ID Card Audit — OCR vs Excel",
+        project4_desc: "Desktop system that audits and reconciles scanned ID documents against Excel files using OCR.",
         project5_title: "SENA Evaluative Judgments",
         project5_desc: "Academic management platform for recording and querying evaluative judgments of apprentices at SENA.",
         btn_view_project: "View Project",
+        btn_download_zip: "Download ZIP",
         btn_view_all_projects: "View all projects",
 
         // Contact Section

@@ -198,11 +198,11 @@ body {
 /* MAIN CONTENT */
 .main-content {
   width: 65%;
-  padding: 1.5rem 2rem;
+  padding: 1.25rem 2rem;
 }
 
 .cv-header {
-  margin-bottom: 1.5rem;
+  margin-bottom: 0.9rem;
 }
 
 .cv-header h1 {
@@ -224,7 +224,7 @@ body {
 }
 
 .section {
-  margin-bottom: 1.2rem;
+  margin-bottom: 0.85rem;
 }
 
 .section-title {
@@ -233,13 +233,13 @@ body {
   color: var(--text-dark);
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  margin-bottom: 0.8rem;
+  margin-bottom: 0.55rem;
   padding-bottom: 0.3rem;
   border-bottom: 2px solid var(--border);
 }
 
 .profile-text {
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   color: var(--text-light);
   text-align: justify;
   line-height: 1.3;
@@ -248,19 +248,20 @@ body {
 /* Timeline / Items */
 .timeline-item {
   display: flex;
-  margin-bottom: 0.8rem;
+  margin-bottom: 0.55rem;
 }
 
 .timeline-date {
-  width: 25%;
+  width: 21%;
   font-weight: 700;
-  font-size: 0.85rem;
+  font-size: 0.78rem;
   color: var(--text-dark);
-  padding-right: 1rem;
+  padding-right: 0.5rem;
+  white-space: nowrap;
 }
 
 .timeline-content {
-  width: 75%;
+  width: 79%;
 }
 
 .timeline-content h4 {
@@ -279,7 +280,7 @@ body {
 }
 
 .timeline-content p {
-  font-size: 0.82rem;
+  font-size: 0.8rem;
   color: var(--text-light);
   line-height: 1.3;
 }
